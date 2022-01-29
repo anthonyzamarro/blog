@@ -26,6 +26,7 @@ export default function Home({ allPostsData }) {
         <p>
           This is my website.
         </p>
+        <p>It's great</p>
       </section>
       <section className={`${utilStyles.headingMd} ${utilStyles.padding1px}`}>
         <h2 className={utilStyles.headingLg}>Blog</h2>
