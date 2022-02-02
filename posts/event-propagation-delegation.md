@@ -91,6 +91,8 @@ The code is more performant and it helps organize the code much better. Thanks t
 This works even if we dynamically add more list items with JavaScript. The event listener will be applied to any newly created items. This is great because again we don't need to worry about adding an event listener for the new items since the parent node has the listener already. 
 
 
+Code Sandbox: https://codesandbox.io/s/ecstatic-butterfly-by9r4?file=/src/index.js
+
 
 Sources:
 - https://javascript.info/event-delegation
