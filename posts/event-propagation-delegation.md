@@ -1,15 +1,13 @@
 ---
-title: 'Event Delegation in JavaScript'
-date: '2023-01-31'
+title: 'Event Propogation and Delegation'
+date: '2022-01-31'
 ---
-
-# Event Propogation and Event Delegation
 
 ## Event Propogation: Bubbling
 
 **Event bubbling** occurs when a DOM event is fired and the event traverses up the DOM tree to ancestor nodes. The event *"bubbles up"* to parent nodes. For example, we have this HTML:
 
-```
+```html
 <ul id="list">
     <li>item 1</li>
     <li>item 2</li>
@@ -19,7 +17,7 @@ date: '2023-01-31'
 ```
 And this is our JS:
 
-```
+```javascript
 const item3 = document.querySelector("#item-3");
 
 item3.addEventListener("click", (event) => {
@@ -41,7 +39,7 @@ When you click on `<li id="item-3">item 3</li>`, you will notice that both "chil
 
 **Event capturing** works similarly to bubbling, but the order of triggered events is reversed. In our JS, we will add a third argument to the parent listener:
 
-```
+```javascript
 list.addEventListener("click", (event) => {
   console.log("parent");
 }, true);
@@ -51,7 +49,7 @@ The third argument is for capturing, which means that the order of the event wil
 
 When events bubble and capture, they go all the way up the DOM and can trigger other handlers. We can prevent his by adding the `stopPropogation()` method on the event, like so:
 
-```
+```javascript
 item3.addEventListener("click", (event) => {
   console.log("child");
   event.stopPropagation();
@@ -65,7 +63,7 @@ We can use bubbling and capturing to our advantage through **event delegation**.
 ## Event Delegation
 Event delegation is when you add one event listener to a parent element and that event listener can be used by its children. For example, you can have this as your HTML:
 
-```
+```html
 <ul id="list">
     <li>item 1</li>
     <li>item 2</li>
@@ -75,7 +73,7 @@ Event delegation is when you add one event listener to a parent element and that
 ```
 And this can be your JS:
 
-```
+```javascript
 const list = document.querySelector('#list');
 
 list.addEventListener('click', event => {
